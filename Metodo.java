@@ -87,8 +87,27 @@ public LinkedList<TabletaGrafica> LlenarTableta(LinkedList<TabletaGrafica> l){
 }
     return l;
 }
-public LinkedList<ComputadorPortatil> LlenarCompu(LinkedList<ComputadorPortatil> l){
-    
+public LinkedList<ComputadoraPortatil> LlenarCompu(LinkedList<ComputadoraPortatil> l){
+    boolean pedir = true;
+    while (pedir){
+        ComputadoraPortatil u= new ComputadoraPortatil();
+        System.out.println("el serial del computador es: ");
+        u.setSerial(sc.next());
+        System.out.println("La marca del computador es: ");
+        u.setMarca(sc.next());
+        System.out.println("el tamaño del compuatdor es: ");
+        u.setTamaño(sc.nextFloat());
+        System.out.println("El precio del computador es: ");
+        u.setPrecio(sc.nextFloat());
+        System.out.println("¿desea registrar otro computador? 1.Si, 2.No");
+        int opt = sc.nextInt();
+        if(opt==2){
+            pedir = false;
+            break;
+        }
+    }
+    return l;
 }
+//nigg
 
 }
