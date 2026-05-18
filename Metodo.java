@@ -108,6 +108,78 @@ public LinkedList<ComputadoraPortatil> LlenarCompu(LinkedList<ComputadoraPortati
     }
     return l;
 }
-//nigg
+public void MostrarEstudianteIng(LinkedList<EstudianteIngenieria> l){
+    for ( EstudianteIngenieria o : l ) {
+        System.out.println("Nombre"+ o.getNombre());
+        System.out.println("Apellido"+o.getApellido());
+        System.out.println("Cedula"+o.getCedula());
+        System.out.println("telefono"+o.getTelefono());
+        System.out.println("numero de semestre"+o.getNumero_semestre());
+        System.out.println("promedio"+o.getPromedio());
+        System.out.println("serial del equipo"+o.getSerial_Equipo());
+    }
+}
+public void MostrarEstudianteDis(LinkedList<EstudianteDiseño> l){
+    for (EstudianteDiseño o : l) {
+        System.out.println("Nombre"+o.getNombre());
+        System.out.println("Apellido"+o.getApellido());
+        System.out.println("Cedula"+o.getCedula());
+        System.out.println("Telefono"+o.getTelefono());
+        System.out.println("Cantidad de asignaturas"+o.getCantidad_asignaturas());
+        System.out.println("Serial del equipo"+o.getSerial_equipo());
+        }
+}
+public void MostrarTableta(LinkedList<TabletaGrafica> l){
+    for ( TabletaGrafica o : l) {
+        System.out.println("Serial"+o.getSerial());
+        System.out.println("Marca"+o.getMarca());
+        System.out.println("Precio"+o.getPrecio());
+        System.out.println("Tamaño"+o.getTamaño());
+        
+        
+    }
+}
+public void MostrarComputador(LinkedList<ComputadoraPortatil> l){
+    for ( ComputadoraPortatil o : l) {
+        System.out.println("Serial"+o.getSerial());
+        System.out.println("Marca"+o.getMarca());
+        System.out.println("Precio"+o.getPrecio());
+        System.out.println("Tamaño"+o.getTamaño());
+        
+        
+    }
+}
+
+
+public LinkedList<EstudianteIngenieria> modificEstudianteIngenierias(int Cedula, LinkedList<EstudianteIngenieria> l){
+    for (EstudianteIngenieria o : l) {
+        if(o.getCedula()==Cedula){
+            System.out.println("ingrese el nombre");
+            o.setNombre(sc.next());
+            System.out.println("Ingrese el apellido");
+            o.setApellido(sc.next());
+            System.out.println("ingrese el telefono");
+            o.setTelefono(sc.nextInt());
+            System.out.println("ingrese el numero de semestre");
+            o.setNumero_semestre(sc.nextInt());
+            System.out.println("ingrese el promedio");
+            o.setPromedio(sc.nextFloat());
+            System.out.println("ingrese el serial del equipo");
+            o.setSerial_Equipo(sc.next());
+            
+        }else{
+            System.out.println("Estudiante no encontrado");
+
+        }
+        
+    }
+return l;
+}
+ 
+
+
+
+
+
 
 }
