@@ -1,40 +1,55 @@
 public class TabletaGrafica {
     private String Serial;
     private String Marca;
-    private float tamaño;
-    private float precio;
+    private float Tamaño;
+    private float Precio;
+    private boolean Almacenamiento;
+    private float Peso;
     public TabletaGrafica() {
     }
-    public TabletaGrafica(String serial, String marca, float tamaño, float precio) {
+    public TabletaGrafica(String serial, String marca, float tamaño, float precio, boolean almacenamiento, float peso) {
         this.Serial = serial;
         this.Marca = marca;
-        this.tamaño = tamaño;
-        this.precio = precio;
+        this.Tamaño = tamaño;
+        this.Precio = precio;
+        this.Almacenamiento = almacenamiento;
+        this.Peso = peso;
     }
     public String getSerial() {
         return Serial;
     }
     public void setSerial(String serial) {
-        Serial = serial;
+        this.Serial = serial;
     }
     public String getMarca() {
         return Marca;
     }
     public void setMarca(String marca) {
-        Marca = marca;
+        this.Marca = marca;
     }
     public float getTamaño() {
-        return tamaño;
+        return Tamaño;
     }
     public void setTamaño(float tamaño) {
-        this.tamaño = tamaño;
+        this.Tamaño = tamaño;
     }
     public float getPrecio() {
-        return precio;
+        return Precio;
     }
     public void setPrecio(float precio) {
-        this.precio = precio;
+        this.Precio = precio;
     }
-    
+    public boolean isAlmacenamiento() {
+        return Almacenamiento;
+    }
+    public void setAlmacenamiento(boolean almacenamiento) {
+        this.Almacenamiento = almacenamiento;
+    }
+    public float getPeso() {
+        return Peso;
+    }
+    public void setPeso(float peso) {
+        this.Peso = peso;
+    }
     
 }
