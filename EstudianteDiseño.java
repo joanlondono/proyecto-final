@@ -1,14 +1,14 @@
 public class EstudianteDiseño {
-    private int cedula;
+    private String cedula;
     private String nombre;
     private String apellido;
-    private int telefono;
+    private String telefono;
     private boolean modalidad;
     private int cantidad_asignaturas;
     private String serial_equipo;
     public EstudianteDiseño() {
     }
-    public EstudianteDiseño(int cedula, String nombre, String apellido, int telefono, boolean modalidad,
+    public EstudianteDiseño(String cedula, String nombre, String apellido, String telefono, boolean modalidad,
             int cantidad_asignaturas, String serial_equipo) {
         this.cedula = cedula;
         this.nombre = nombre;
@@ -18,10 +18,10 @@ public class EstudianteDiseño {
         this.cantidad_asignaturas = cantidad_asignaturas;
         this.serial_equipo = serial_equipo;
     }
-    public int getCedula() {
+    public String getCedula() {
         return cedula;
     }
-    public void setCedula(int cedula) {
+    public void setCedula(String cedula) {
         this.cedula = cedula;
     }
     public String getNombre() {
@@ -36,10 +36,10 @@ public class EstudianteDiseño {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
     public boolean isModalidad() {

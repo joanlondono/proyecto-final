@@ -2,31 +2,39 @@ import java.util.Scanner;
 import java.util.LinkedList;
 public class Metodo {
 Scanner sc = new Scanner(System.in);
-    public LinkedList<EstudianteIngenieria> LlenarEstudianteIg(LinkedList<EstudianteIngenieria> l){
+validacionesD vD = new validacionesD();
+validacionesI vI = new validacionesI();
+    public LinkedList<EstudianteIngenieria> LlenarEstudianteIg(LinkedList<EstudianteIngenieria> l, validacionesI vI){
         boolean pedir= true;
         while(pedir){
         EstudianteIngenieria o = new EstudianteIngenieria();
         System.out.println("ingrese la cedula  del estudiante: ");
-        o.setCedula(sc.nextInt());
+        o.setCedula(sc.next());
+        o.setCedula(vI.validarCedula(sc.next()));
         System.out.println("ingrese el nombre del estudiante: ");
         o.setNombre(sc.next());
+        o.setNombre(vI.validarNombre(sc.next()));
         System.out.println("ingrese el apellido del estudiante: ");
         o.setApellido(sc.next());
+        o.setApellido(vI.validarApellido(sc.next()));
         System.out.println("ingrese el telefono del estudiante: ");
-        o.setTelefono(sc.nextInt());
-        System.out.println("ingrese el numero de semestre del estudiante: ");
+        o.setTelefono(sc.next());
+        o.setTelefono(vI.validarTelefono(sc.next()));
+        
+        System.out.println("Ingrese el número de semestre del estudiante (1-15): ");
         o.setNumero_semestre(sc.nextInt());
+        o.setNumero_semestre(vI.validarNumerodesemestre(sc));
         System.out.println("el promedio del estudiante es: ");
         o.setPromedio(sc.nextFloat());
+        o.setPromedio(vI.validarPromedio(sc));
+        
         System.out.println("el serial del equipo es: ");
         o.setSerial_Equipo(sc.next());
+        o.setSerial_Equipo(vI.validarSerialdeEquipo(sc));
+
+        
         l.add(o);
-        System.out.println("¿ingrsar otro estudiante?, 1.Si, 2.No");
-        int opt = sc.nextInt();
-            if (opt == 2) {
-                pedir = false;
-                break;
-                }
+        
 }
     return l;
 }
@@ -35,25 +43,28 @@ public LinkedList<EstudianteDiseño> LlenarEstudianteDi(LinkedList<EstudianteDis
         while(pedir){
         EstudianteDiseño e = new EstudianteDiseño();
         System.out.println("ingrese el nombre del estudiante: ");
-        e.setCedula(sc.nextInt());
+        e.setCedula(sc.next());
+        e.setCedula(vD.validarCedula(sc.next()));
         System.out.println("ingrese el nombre del estudiante: ");
         e.setNombre(sc.next());
+        e.setNombre(vD.validarNombre(sc.next()));
         System.out.println("ingrese el apellido del estudiante: ");
         e.setApellido(sc.next());
+        e.setApellido(vD.validarApellido(sc.next()));
         System.out.println("ingrese el telefono del estudiante: ");
-        e.setTelefono(sc.nextInt());
+        e.setTelefono(sc.next());
+        e.setTelefono(vD.validarTelefono(sc.next()));
         System.out.println("La modalidad es virtual o presencial? 1.Presencial, 2.Virtual ");
-        e.setModalidad(sc.nextBoolean());
+        e.setModalidad(vD.validarModalidad(sc));
+
         int opc = sc.nextInt();
         if (opc == 1)
             System.out.println("La modalidad es presencial");
             else if (opc == 2)
             System.out.println("la modalidad es virtual");
-
-        
-        
         System.out.println("La cantidad de asignaturas que ve el estudiante son:  ");
         e.setCantidad_asignaturas(sc.nextInt());
+        e.setCantidad_asignaturas(vD.validarCantidaddeasignatura(sc));
         System.out.println("el serial del equipo es: ");
         e.setSerial_equipo(sc.next());
         l.add(e);
@@ -178,7 +189,7 @@ public void MostrarComputador(LinkedList<ComputadoraPortatil> l){
 }
 
 
-public LinkedList<EstudianteIngenieria> modificEstudianteIngenierias(int Cedula, LinkedList<EstudianteIngenieria> l){
+public LinkedList<EstudianteIngenieria> modificEstudianteIngenierias(String Cedula, LinkedList<EstudianteIngenieria> l){
     for (EstudianteIngenieria o : l) {
         if(o.getCedula()==Cedula){
             System.out.println("ingrese el nombre");
@@ -186,7 +197,7 @@ public LinkedList<EstudianteIngenieria> modificEstudianteIngenierias(int Cedula,
             System.out.println("Ingrese el apellido");
             o.setApellido(sc.next());
             System.out.println("ingrese el telefono");
-            o.setTelefono(sc.nextInt());
+            o.setTelefono(sc.next());
             System.out.println("ingrese el numero de semestre");
             o.setNumero_semestre(sc.nextInt());
             System.out.println("ingrese el promedio");
@@ -202,7 +213,7 @@ public LinkedList<EstudianteIngenieria> modificEstudianteIngenierias(int Cedula,
     }
 return l;
 }
-public LinkedList<EstudianteDiseño> modificEstudianteDiseño(int Cedula, LinkedList<EstudianteDiseño> l){
+public LinkedList<EstudianteDiseño> modificEstudianteDiseño(String Cedula, LinkedList<EstudianteDiseño> l){
     for (EstudianteDiseño o : l) {
         if(o.getCedula()==Cedula){
             System.out.println("ingrese el nombre");
@@ -210,7 +221,7 @@ public LinkedList<EstudianteDiseño> modificEstudianteDiseño(int Cedula, Linked
             System.out.println("Ingrese el apellido");
             o.setApellido(sc.next());
             System.out.println("ingrese el telefono");
-            o.setTelefono(sc.nextInt());
+            o.setTelefono(sc.next());
             System.out.println("La modalidad es virtual o presencial? 1.Presencial, 2.Virtual ");
             o.setModalidad(sc.nextBoolean());
             int opc = sc.nextInt();
@@ -295,7 +306,7 @@ public LinkedList<ComputadoraPortatil> modificComputador(String Serial, LinkedLi
     }
     return l;
 }
-public LinkedList<EstudianteIngenieria> eliminarEstudianteIngenieria(int Cedula, LinkedList<EstudianteIngenieria> l){
+public LinkedList<EstudianteIngenieria> eliminarEstudianteIngenieria(String Cedula, LinkedList<EstudianteIngenieria> l){
     for (EstudianteIngenieria o : l) {
         if(o.getCedula()==Cedula){
             l.remove(o);
@@ -308,7 +319,7 @@ public LinkedList<EstudianteIngenieria> eliminarEstudianteIngenieria(int Cedula,
     }
     return l;
 }
-public LinkedList<EstudianteDiseño> eliminarEstudianteDiseño(int Cedula, LinkedList<EstudianteDiseño> l){
+public LinkedList<EstudianteDiseño> eliminarEstudianteDiseño(String Cedula, LinkedList<EstudianteDiseño> l){
     for (EstudianteDiseño o : l) {
         if(o.getCedula()==Cedula){
             l.remove(o);
@@ -347,7 +358,7 @@ public LinkedList<ComputadoraPortatil> eliminarComputador(String Serial, LinkedL
     }
     return l;
 }
-public LinkedList<EstudianteIngenieria> RegistrarPrestramoEI(int Cedula, LinkedList<EstudianteIngenieria> l){
+public LinkedList<EstudianteIngenieria> RegistrarPrestramoEI(String Cedula, LinkedList<EstudianteIngenieria> l){
     for (EstudianteIngenieria o : l) {
         if(o.getCedula()==Cedula){
             boolean prestar = true;
@@ -376,7 +387,7 @@ public LinkedList<EstudianteIngenieria> RegistrarPrestramoEI(int Cedula, LinkedL
     return l;
 
 }
-public LinkedList<EstudianteDiseño> RegistrarPrestramoED(int Cedula, LinkedList<EstudianteDiseño> D){
+public LinkedList<EstudianteDiseño> RegistrarPrestramoED(String Cedula, LinkedList<EstudianteDiseño> D){
     for (EstudianteDiseño o : D) {
         if(o.getCedula()==Cedula){
             boolean prestar = true;
@@ -404,7 +415,7 @@ public LinkedList<EstudianteDiseño> RegistrarPrestramoED(int Cedula, LinkedList
     }
     return D;
 }
-public LinkedList<EstudianteIngenieria> ModificarPrestamoEI(int Cedula, LinkedList<EstudianteIngenieria> l){
+public LinkedList<EstudianteIngenieria> ModificarPrestamoEI(String Cedula, LinkedList<EstudianteIngenieria> l){
     for (EstudianteIngenieria o : l) {
         if(o.getCedula()==Cedula){
             System.out.println("Que equipo desea modificar? 1.Computadora, 2.Tableta");
@@ -427,7 +438,7 @@ public LinkedList<EstudianteIngenieria> ModificarPrestamoEI(int Cedula, LinkedLi
     }
     return l;
 }
-public LinkedList<EstudianteDiseño> ModificarPrestamoED(int Cedula, LinkedList<EstudianteDiseño> D){
+public LinkedList<EstudianteDiseño> ModificarPrestamoED(String Cedula, LinkedList<EstudianteDiseño> D){
     for (EstudianteDiseño o : D) {
         if(o.getCedula()==Cedula){
             System.out.println("Que equipo desea modificar? 1.Computadora, 2.Tableta");
@@ -450,7 +461,7 @@ public LinkedList<EstudianteDiseño> ModificarPrestamoED(int Cedula, LinkedList<
     }
     return D;
 }
-public LinkedList<EstudianteIngenieria> DevolverEquipoEI(int Cedula, LinkedList<EstudianteIngenieria> l){
+public LinkedList<EstudianteIngenieria> DevolverEquipoEI(String Cedula, LinkedList<EstudianteIngenieria> l){
     for (EstudianteIngenieria o : l) {
         if(o.getCedula()==Cedula){
             o.setSerial_Equipo(null);
@@ -463,7 +474,7 @@ public LinkedList<EstudianteIngenieria> DevolverEquipoEI(int Cedula, LinkedList<
     }
     return l;
 }
-public LinkedList<EstudianteDiseño> DevolverEquipoED(int Cedula, LinkedList<EstudianteDiseño> D){
+public LinkedList<EstudianteDiseño> DevolverEquipoED(String Cedula, LinkedList<EstudianteDiseño> D){
     for (EstudianteDiseño o : D) {
         if(o.getCedula()==Cedula){
             o.setSerial_equipo(null);

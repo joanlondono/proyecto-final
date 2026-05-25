@@ -1,14 +1,14 @@
 public class EstudianteIngenieria{
-    private int Cedula;
+    private String Cedula;
     private String Nombre;
     private String Apellido;
-    private int Telefono;
+    private String Telefono;
     private int Numero_semestre;
     private float Promedio;
     private String Serial_Equipo;
     public EstudianteIngenieria() {
     }
-    public EstudianteIngenieria(int cedula, String nombre, String apellido, int telefono, int numero_semestre,
+    public EstudianteIngenieria(String cedula, String nombre, String apellido, String telefono, int numero_semestre,
             float promedio, String serial_Equipo) {
         Cedula = cedula;
         Nombre = nombre;
@@ -18,10 +18,10 @@ public class EstudianteIngenieria{
         Promedio = promedio;
         Serial_Equipo = serial_Equipo;
     }
-    public int getCedula() {
+    public String getCedula() {
         return Cedula;
     }
-    public void setCedula(int cedula) {
+    public void setCedula(String cedula) {
         Cedula = cedula;
     }
     public String getNombre() {
@@ -36,10 +36,10 @@ public class EstudianteIngenieria{
     public void setApellido(String apellido) {
         Apellido = apellido;
     }
-    public int getTelefono() {
+    public String getTelefono() {
         return Telefono;
     }
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         Telefono = telefono;
     }
     public int getNumero_semestre() {

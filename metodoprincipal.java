@@ -6,113 +6,66 @@ public class metodoprincipal {
         Scanner sc = new Scanner(System.in);
         boolean continuar = true;
         int opcion;
-        Metodo m = new Metodo();
-        EstudianteIngenieria EI = new EstudianteIngenieria();
-        EstudianteDiseño ED = new EstudianteDiseño();
-        while (continuar==true) {
-            System.out.println("1. Estudiante de ingenieria");
-            System.out.println("2. Estudiante de Diseño");
-            System.out.println("3. Mostrar inventario total");
-            System.out.println("4. Salir");
+        validacionesI vI = new validacionesI();
+        validacionesD vD = new validacionesD();
+        ArrayList<EstudianteIngenieria> EI = new ArrayList<>();
+        LinkedList<EstudianteDiseño> ED = new LinkedList<>();
+        LinkedList<TabletaGrafica> t = new LinkedList<>();
+        LinkedList<ComputadoraPortatil> c = new LinkedList<>();
+        while (continuar) {
+            System.out.println("Seleccione una opción:");
+            System.out.println("1. Agregar estudiante de ingeniería");
+            System.out.println("2. Agregar computadora portátil");
+            System.out.println("3. Salir");
             opcion = sc.nextInt();
-            sc.nextLine();
             switch (opcion) {
                 case 1:
-                   
-                   
-                    break;
-                case 2:
+                    EstudianteIngenieria EIE = new EstudianteIngenieria();
+                    System.out.println("Ingrese la cédula del estudiante:");
+                    EIE.setCedula(vI.validarCedula(sc.next()));
+                    System.out.println("Ingrese el nombre del estudiante:");
+                    EIE.setNombre(vI.validarNombre(sc.next()));
+                    System.out.println("Ingrese el apellido del estudiante:");
+                    EIE.setApellido(vI.validarApellido(sc.next()));
+                    System.out.println("Ingrese el teléfono del estudiante:");
+                    EIE.setTelefono(vI.validarTelefono(sc.next()));
+                    System.out.println("Ingrese el número de semestre del estudiante:");
+                    EIE.setNumero_semestre(vI.validarNumerodesemestre(sc));
+                    System.out.println("Ingrese el promedio del estudiante:");
+                    EIE.setPromedio(sc.nextFloat());
+                    EIE.setPromedio(vI.validarPromedio(sc));
+                    System.out.println("Ingrese el serial del equipo del estudiante:");
+                    EIE.setSerial_Equipo(vI.validarSerialdeEquipo(sc));
+                    EI.add(EIE);
+                    System.out.println("¿ingrsar otro estudiante?, 1.Si, 2.No");
+                    int opt = sc.nextInt();
+                    if (opt == 2) {
+                    continuar = false;
+                break;
+                }
                     
                     break;
-                case 3:
-                    // Lógica para mostrar inventario total
-                    break;
-                case 4:
-                    continuar = false;
-                    break;
-                default:
-                    System.out.println("Opción no válida");
-                    System.out.println("por favor ingresar una opcion valida del 1 al 4");
-                    break;
-            }
-        }
-
-      
-
-     {
-        
-        LinkedList<EstudianteIngenieria> estudiantesIngenieria = new LinkedList<>();
-        
-        
-        while (continuar==true) {
-            System.out.println("1. Registrar préstamo");
-            System.out.println("2. Modificar préstamo");
-            System.out.println("3. Devolver de equipo");
-            System.out.println("4. Buscar equipo");
-            System.out.println("5. Volver al menú principal");
-            opcion = sc.nextInt();
-            sc.nextLine();
-            switch (opcion) {
-                case 1:
-                   m.RegistrarPrestramoEI(opcion, estudiantesIngenieria);
-                    break;
                 case 2:
-                    m.ModificarPrestamoEI(opcion, estudiantesIngenieria);
+                    ComputadoraPortatil computadora = new ComputadoraPortatil();
+                    System.out.println("Ingrese el serial de la computadora portátil:");
+                    computadora.setSerial(sc.next());
+                    System.out.println("Ingrese la marca de la computadora portátil:");
+                    computadora.setMarca(sc.next());
+                    System.out.println("Ingrese el tamaño de la computadora portátil:");
+                    computadora.setTamaño(sc.nextFloat());
+                    System.out.println("Ingrese el precio de la computadora portátil:");
+                    computadora.setPrecio(sc.nextFloat());
+                    c.add(computadora);
                     break;
                 case 3:
-                    m.DevolverEquipoEI(opcion, estudiantesIngenieria);
-                    break;
-                case 4:
-                    m.BuscarEquipoEI(null, estudiantesIngenieria);
-                    break;
-                case 5:
                     continuar = false;
                     break;
                 default:
-                    System.out.println("Opción no válida");
-                    System.out.println("por favor ingresar una opcion valida del 1 al 5");
-                    break;
+                    System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
             }
         }
-    }
-    LinkedList<EstudianteDiseño> estudiantesDiseno = new LinkedList<>();
-       
-       
-        while (continuar==true) {
-            System.out.println("1. Registrar préstamo");
-            System.out.println("2. Modificar préstamo");
-            System.out.println("3. Devolver de equipo");
-            System.out.println("4. Buscar equipo");
-            System.out.println("5. Volver al menú principal");
-            opcion = sc.nextInt();
-            sc.nextLine();
-            switch (opcion) {
-                case 1:
-                m.RegistrarPrestramoED(opcion, estudiantesDiseno);
-                    break;
-                case 2:
-                    m.ModificarPrestamoED(opcion, estudiantesDiseno);
-                    break;
-                case 3:
-                    m.DevolverEquipoED(opcion, estudiantesDiseno);
-                    break;
-                case 4:
-                    m.BuscarEquipoED(null, estudiantesDiseno);
-                    break;
-                case 5:
-                    continuar = false;
-                    break;
-                default:
-                    System.out.println("Opción no válida");
-                    System.out.println("por favor ingresar una opcion valida del 1 al 5");
-                    break;
-            }
-        }
-        
+    
+
     }
 }
-
-
-  
-
-
+     
