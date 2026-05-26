@@ -107,19 +107,24 @@ public LinkedList<TabletaGrafica> LlenarTableta(LinkedList<TabletaGrafica> l){
     }
     return l;
 }
-public LinkedList<ComputadoraPortatil> LlenarCompu(LinkedList<ComputadoraPortatil> l){
+public LinkedList<ComputadoraPortatil> LlenarCompu(LinkedList<ComputadoraPortatil> l, validacionesC vC){
     boolean pedir = true;
     while (pedir){
         ComputadoraPortatil u= new ComputadoraPortatil();
         System.out.println("el serial del computador es: ");
         u.setSerial(sc.next());
+        u.setSerial(vC.validarSerialdeEquipo(sc));
         System.out.println("La marca del computador es: ");
         u.setMarca(sc.next());
+        u.setMarca(vC.ValidarMarca(sc.next()));
         System.out.println("el tamaño del compuatdor es: ");
         u.setTamaño(sc.nextFloat());
+        u.setTamaño(vC.validarTamaño(sc));
         System.out.println("El precio del computador es: ");
         u.setPrecio(sc.nextFloat());
+        u.setPrecio(vC.validarPrecio(sc));
         System.out.println("El sistema operativo del computador es: 1.Windows 7, 2.Windows 10, 3.Windows 11");
+        u.setSistema_operativo(vC.validarSistemaOperativo(sc));
         int opc = sc.nextInt();
         if (opc == 1)            
             System.out.println("El sistema operativo del computador es Windows 7");
@@ -128,6 +133,7 @@ public LinkedList<ComputadoraPortatil> LlenarCompu(LinkedList<ComputadoraPortati
             else if (opc == 3)
             System.out.println("El sistema operativo del computador es Windows 11");
         System.out.println("El procesador del computador es: 1.Intel Core i5, 2.AMD Ryzen");
+        u.setProcesador(vC.validarProcesador(sc));
         int opc2 = sc.nextInt();
         if (opc2 == 1)
             System.out.println("El procesador del computador es Intel Core i5");

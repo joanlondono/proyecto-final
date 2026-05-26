@@ -7,7 +7,7 @@ public class validacionesI {
         do {
             isValid = true;
            
-        if (cedula.length() != 10) {
+        if (cedula.length() < 8 || cedula.length() > 11) {
             isValid = false;
         } else {
             for (int i = 0; i < cedula.length(); i++) {
@@ -18,7 +18,7 @@ public class validacionesI {
             }
         }
         if (!isValid) {
-            System.out.println("Cédula no válida. Por favor, ingrese una cédula válida de 10 dígitos.");
+            System.out.println("Cédula no válida. Por favor, ingrese una cédula válida de 8 a 11 dígitos.");
             cedula = sc.nextLine();
         }
     }while (!isValid);
