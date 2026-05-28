@@ -15,6 +15,7 @@ public class metodoprincipal {
         LinkedList<EstudianteDiseño> ED = new LinkedList<>();
         LinkedList<TabletaGrafica> t = new LinkedList<>();
         LinkedList<ComputadoraPortatil> c = new LinkedList<>();
+        
 
         Metodo m = new Metodo();
 
@@ -104,7 +105,7 @@ public class metodoprincipal {
                     break;
 
                 case 5:
-                    menuPrestamosEI(sc, t, c, m, vC, vT);
+                    menuPrestamosEI(sc, t, c, m, vC, vT,EI);
                     break;
 
                 case 6:
@@ -181,7 +182,8 @@ public class metodoprincipal {
                               LinkedList<ComputadoraPortatil> c,
                               Metodo m,
                               validacionesC vC,
-                              validacionesT vT) {
+                              validacionesT vT,
+                            LinkedList<EstudianteIngenieria> EI) {
 
         boolean menuPrestamosEI = true;
 
@@ -199,7 +201,14 @@ public class metodoprincipal {
 
             switch (opcion) {
                 case 1:
-                    System.out.println("Registrar préstamo (conecta tu método aquí).");
+                   
+                    
+                sc.nextLine(); // limpia el ENTER pendiente si venías de nextInt()
+                System.out.print("Ingrese la cédula del estudiante: ");
+                String cedula = sc.nextLine();
+
+                EI = m.RegistrarPrestramoEI(cedula, EI);
+
                     break;
 
                 case 2:
