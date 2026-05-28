@@ -9,23 +9,23 @@ validacionesI vI = new validacionesI();
         while(pedir){
         EstudianteIngenieria o = new EstudianteIngenieria();
         System.out.println("ingrese la cedula  del estudiante: ");
-        o.setCedula(sc.next());
+        //o.setCedula(sc.next());
         o.setCedula(vI.validarCedula(sc.next()));
         System.out.println("ingrese el nombre del estudiante: ");
-        o.setNombre(sc.next());
+        //o.setNombre(sc.next());
         o.setNombre(vI.validarNombre(sc.next()));
         System.out.println("ingrese el apellido del estudiante: ");
-        o.setApellido(sc.next());
+        //o.setApellido(sc.next());
         o.setApellido(vI.validarApellido(sc.next()));
         System.out.println("ingrese el telefono del estudiante: ");
-        o.setTelefono(sc.next());
+        //o.setTelefono(sc.next());
         o.setTelefono(vI.validarTelefono(sc.next()));
         
         System.out.println("Ingrese el número de semestre del estudiante (1-15): ");
-        o.setNumero_semestre(sc.nextInt());
+        //o.setNumero_semestre(sc.nextInt());
         o.setNumero_semestre(vI.validarNumerodesemestre(sc));
         System.out.println("el promedio del estudiante es: ");
-        o.setPromedio(sc.nextFloat());
+        //o.setPromedio(sc.nextFloat());
         o.setPromedio(vI.validarPromedio(sc));
         
         System.out.println("el serial del equipo es: ");
@@ -38,21 +38,21 @@ validacionesI vI = new validacionesI();
 }
     return l;
 }
-public LinkedList<EstudianteDiseño> LlenarEstudianteDi(LinkedList<EstudianteDiseño> l){
+public LinkedList<EstudianteDiseño> LlenarEstudianteDi(LinkedList<EstudianteDiseño> l, validacionesD vD){
         boolean pedir= true;
         while(pedir){
         EstudianteDiseño e = new EstudianteDiseño();
-        System.out.println("ingrese el nombre del estudiante: ");
-        e.setCedula(sc.next());
+        System.out.println("ingrese la cedula del estudiante: ");
+        
         e.setCedula(vD.validarCedula(sc.next()));
         System.out.println("ingrese el nombre del estudiante: ");
-        e.setNombre(sc.next());
+      
         e.setNombre(vD.validarNombre(sc.next()));
         System.out.println("ingrese el apellido del estudiante: ");
-        e.setApellido(sc.next());
+        
         e.setApellido(vD.validarApellido(sc.next()));
         System.out.println("ingrese el telefono del estudiante: ");
-        e.setTelefono(sc.next());
+       
         e.setTelefono(vD.validarTelefono(sc.next()));
         System.out.println("La modalidad es virtual o presencial? 1.Presencial, 2.Virtual ");
         e.setModalidad(vD.validarModalidad(sc));
@@ -63,10 +63,11 @@ public LinkedList<EstudianteDiseño> LlenarEstudianteDi(LinkedList<EstudianteDis
             else if (opc == 2)
             System.out.println("la modalidad es virtual");
         System.out.println("La cantidad de asignaturas que ve el estudiante son:  ");
-        e.setCantidad_asignaturas(sc.nextInt());
+        
         e.setCantidad_asignaturas(vD.validarCantidaddeasignatura(sc));
         System.out.println("el serial del equipo es: ");
-        e.setSerial_equipo(sc.next());
+        
+        e.setSerial_equipo(vD.validarSerialdeEquipo(sc));
         l.add(e);
         System.out.println("¿ingrsar otro estudiante?, 1.Si, 2.No");
         int opt = sc.nextInt();
@@ -159,8 +160,8 @@ public void MostrarEstudianteIng(LinkedList<EstudianteIngenieria> l){
         System.out.println("serial del equipo"+o.getSerial_Equipo());
     }
 }
-public void MostrarEstudianteDis(LinkedList<EstudianteDiseño> l){
-    for (EstudianteDiseño o : l) {
+public void MostrarEstudianteDis(LinkedList<EstudianteDiseño> e){
+    for (EstudianteDiseño o : e) {
         System.out.println("Nombre"+o.getNombre());
         System.out.println("Apellido"+o.getApellido());
         System.out.println("Cedula"+o.getCedula());
@@ -195,21 +196,21 @@ public void MostrarComputador(LinkedList<ComputadoraPortatil> l){
 }
 
 
-public LinkedList<EstudianteIngenieria> modificEstudianteIngenierias(String Cedula, LinkedList<EstudianteIngenieria> l){
+public LinkedList<EstudianteIngenieria> modificEstudianteIngenierias(String Cedula, LinkedList<EstudianteIngenieria> l, validacionesI vI){
     for (EstudianteIngenieria o : l) {
         if(o.getCedula()==Cedula){
             System.out.println("ingrese el nombre");
-            o.setNombre(sc.next());
+            o.setNombre(vI.validarNombre(sc.next()));
             System.out.println("Ingrese el apellido");
-            o.setApellido(sc.next());
+            o.setApellido(vI.validarApellido(sc.next()));
             System.out.println("ingrese el telefono");
-            o.setTelefono(sc.next());
+            o.setTelefono(vI.validarTelefono(sc.next()));
             System.out.println("ingrese el numero de semestre");
-            o.setNumero_semestre(sc.nextInt());
+            o.setNumero_semestre(vI.validarNumerodesemestre(sc));
             System.out.println("ingrese el promedio");
-            o.setPromedio(sc.nextFloat());
+            o.setPromedio(vI.validarPromedio(sc));
             System.out.println("ingrese el serial del equipo");
-            o.setSerial_Equipo(sc.next());
+            o.setSerial_Equipo(vI.validarSerialdeEquipo(sc));
 
         }else{
             System.out.println("Estudiante no encontrado");
@@ -219,26 +220,26 @@ public LinkedList<EstudianteIngenieria> modificEstudianteIngenierias(String Cedu
     }
 return l;
 }
-public LinkedList<EstudianteDiseño> modificEstudianteDiseño(String Cedula, LinkedList<EstudianteDiseño> l){
+public LinkedList<EstudianteDiseño> modificEstudianteDiseño(String Cedula, LinkedList<EstudianteDiseño> l, validacionesD vD){
     for (EstudianteDiseño o : l) {
         if(o.getCedula()==Cedula){
             System.out.println("ingrese el nombre");
-            o.setNombre(sc.next());
+            o.setNombre(vD.validarNombre(sc.next()));
             System.out.println("Ingrese el apellido");
-            o.setApellido(sc.next());
+            o.setApellido(vD.validarApellido(sc.next()));
             System.out.println("ingrese el telefono");
-            o.setTelefono(sc.next());
+            o.setTelefono(vD.validarTelefono(sc.next()));
             System.out.println("La modalidad es virtual o presencial? 1.Presencial, 2.Virtual ");
-            o.setModalidad(sc.nextBoolean());
+            o.setModalidad(vD.validarModalidad(sc));
             int opc = sc.nextInt();
         if (opc == 1)
             System.out.println("La modalidad es presencial");
             else if (opc == 2)
             System.out.println("la modalidad es virtual");
             System.out.println("ingrese la cantidad de asignaturas");
-            o.setCantidad_asignaturas(sc.nextInt());
+            o.setCantidad_asignaturas(vD.validarCantidaddeasignatura(sc));
             System.out.println("ingrese el serial del equipo");
-            o.setSerial_equipo(sc.next());
+            o.setSerial_equipo(vD.validarSerialdeEquipo(sc));
 
         }else{
             System.out.println("Estudiante no encontrado");

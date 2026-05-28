@@ -19,7 +19,7 @@ public class validacionesI {
         }
         if (!isValid) {
             System.out.println("Cédula no válida. Por favor, ingrese una cédula válida de 8 a 11 dígitos.");
-            cedula = sc.nextLine();
+            cedula = sc.next();
         }
     }while (!isValid);
     return cedula;
@@ -45,7 +45,7 @@ public String validarNombre(String nombre) {
         if (!isValid) {
             System.out.println("Nombre inválido. Solo letras y espacios permitidos, con un máximo de 15 caracteres.");
            
-            nombre = sc.nextLine();
+            nombre = sc.next();
         }
     }
     return nombre;
@@ -70,7 +70,7 @@ public String validarNombre(String nombre) {
         if (!isValid) {
             System.out.println("Apellido inválido. Solo letras y espacios permitidos, con un máximo de 15 caracteres.");
             
-            apellido = sc.nextLine();
+            apellido = sc.next();
         }
     }
     return apellido;
@@ -95,7 +95,7 @@ public String validarNombre(String nombre) {
         }
         if (!isValid) {
             System.out.println("Teléfono no válido. Por favor, ingrese un teléfono válido de 10 dígitos.");
-            telefono = sc.nextLine();
+            telefono = sc.next();
         }
     }while (!isValid);
     return telefono;

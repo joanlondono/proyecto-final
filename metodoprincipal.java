@@ -1,107 +1,282 @@
-import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.LinkedList;
+import java.util.Scanner;
+
 public class metodoprincipal {
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        boolean continuar = true;
-        int opcion;
+
         validacionesI vI = new validacionesI();
         validacionesD vD = new validacionesD();
         validacionesC vC = new validacionesC();
         validacionesT vT = new validacionesT();
-        ArrayList<EstudianteIngenieria> EI = new ArrayList<>();
+
+        LinkedList<EstudianteIngenieria> EI = new LinkedList<>();
         LinkedList<EstudianteDiseño> ED = new LinkedList<>();
         LinkedList<TabletaGrafica> t = new LinkedList<>();
         LinkedList<ComputadoraPortatil> c = new LinkedList<>();
-        while (continuar) {
-            System.out.println("Seleccione una opción:");
-            System.out.println("1. Agregar estudiante de ingeniería");
-            System.out.println("2. Agregar estudiante de diseño");
-            System.out.println("3. Agregar computadora portátil");
+
+        Metodo m = new Metodo();
+
+        boolean menuPrincipal = true;
+
+        while (menuPrincipal) {
+            System.out.println(" MENÚ PRINCIPAL");
+            System.out.println("1. Estudiante de ingeniería");
+            System.out.println("2. Estudiante de diseño");
+            System.out.println("3. Mostrar inventario");
             System.out.println("4. Salir");
-            opcion = sc.nextInt();
+            System.out.print("Opción: ");
+
+            int opcion = sc.nextInt();
+            sc.nextLine(); // limpiar buffer
+
             switch (opcion) {
                 case 1:
-                    EstudianteIngenieria EIE = new EstudianteIngenieria();
-                    System.out.println("Ingrese la cédula del estudiante:");
-                    EIE.setCedula(vI.validarCedula(sc.next()));
-                    System.out.println("Ingrese el nombre del estudiante:");
-                    EIE.setNombre(vI.validarNombre(sc.next()));
-                    System.out.println("Ingrese el apellido del estudiante:");
-                    EIE.setApellido(vI.validarApellido(sc.next()));
-                    System.out.println("Ingrese el teléfono del estudiante:");
-                    EIE.setTelefono(vI.validarTelefono(sc.next()));
-                    System.out.println("Ingrese el número de semestre del estudiante:");
-                    EIE.setNumero_semestre(vI.validarNumerodesemestre(sc));
-                    System.out.println("Ingrese el promedio del estudiante:");
-                    EIE.setPromedio(sc.nextFloat());
-                    EIE.setPromedio(vI.validarPromedio(sc));
-                    System.out.println("Ingrese el serial del equipo del estudiante:");
-                    EIE.setSerial_Equipo(vI.validarSerialdeEquipo(sc));
-                    EI.add(EIE);
-                    System.out.println("¿ingrsar otro estudiante?, 1.Si, 2.No");
-                    int opt = sc.nextInt();
-                    if (opt == 2) {
-                    continuar = false;
-                break;
-                }
-                    
+                    menuIngenieria(sc, EI, t, c, m, vI, vC, vT);
                     break;
+
                 case 2:
-                    EstudianteDiseño EDE = new EstudianteDiseño();
-                    System.out.println("Ingrese la cédula del estudiante:");
-                    EDE.setCedula(vD.validarCedula(sc.next()));
-                    System.out.println("Ingrese el nombre del estudiante:");
-                    EDE.setNombre(vD.validarNombre(sc.next()));
-                    System.out.println("Ingrese el apellido del estudiante:");
-                    EDE.setApellido(vD.validarApellido(sc.next()));
-                    System.out.println("Ingrese el teléfono del estudiante:");
-                    EDE.setTelefono(vD.validarTelefono(sc.next()));
-                    System.out.println("Ingrese la cantidad de asignaturas del estudiante:");
-                    EDE.setCantidad_asignaturas(vD.validarCantidaddeasignatura(sc));
-                    System.out.println("¿que modalidad tiene el estudiante?, 1.Presencial, 2.Virtual");
-                    EDE.setModalidad(vD.validarModalidad(sc));
-                    System.out.println("Ingrese el serial del equipo del estudiante:");
-                    EDE.setSerial_equipo(vD.validarSerialdeEquipo(sc));
-                    ED.add(EDE);
-                    System.out.println("¿ingrsar otro estudiante?, 1.Si, 2.No");
-                    opt = sc.nextInt();
-                    if (opt == 2) {
-                    continuar = false;
-                break;
-                }
-                    
+                    menuDiseno(sc, ED, t, c, m, vD, vC, vT);
                     break;
+
                 case 3:
-                    ComputadoraPortatil computadora = new ComputadoraPortatil();
-                    System.out.println("Ingrese el serial de la computadora portátil:");
-                   
-                    computadora.setSerial(vC.validarSerialdeEquipo(sc));
-                    System.out.println("Ingrese la marca de la computadora portátil:");
-                    
-                    computadora.setMarca(vC.ValidarMarca(sc.next()));
-                    System.out.println("Ingrese el tamaño de la computadora portátil (en pulgadas):");
-                    
-                    computadora.setTamaño(vC.validarTamaño(sc));
-                    System.out.println("Ingrese el precio de la computadora portátil:");
-                    
-                    computadora.setPrecio(vC.validarPrecio(sc));
-                    System.out.println("Ingrese el sistema operativo de la computadora portátil: 1.Windows 7, 2.Windows 10, 3.Windows 11");
-                    computadora.setSistema_operativo(vC.validarSistemaOperativo(sc));
-                    System.out.println("Ingrese el procesador de la computadora portátil: 1.Intel Core i5, 2.AMD Ryzen");
-                    computadora.setProcesador(vC.validarProcesador(sc));
-                    c.add(computadora);
+                    System.out.println("Mostrando inventario...");
+                    m.MostrarTableta(t);
+                    m.MostrarComputador(c);
                     break;
+
                 case 4:
-                    continuar = false;
+                    menuPrincipal = false;
+                    System.out.println("Saliendo del programa");
                     break;
+
                 default:
-                    System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
+                    System.out.println("Opción no válida.");
             }
         }
-    
 
+        sc.close();
     }
+
+    
+    static void menuIngenieria(Scanner sc,
+                              LinkedList<EstudianteIngenieria> EI,
+                              LinkedList<TabletaGrafica> t,
+                              LinkedList<ComputadoraPortatil> c,
+                              Metodo m,
+                              validacionesI vI,
+                              validacionesC vC,
+                              validacionesT vT) {
+
+        boolean menuIng = true;
+
+        while (menuIng) {
+            System.out.println("bienvenido estudiante de ingenieria");
+            System.out.println("1. Agregar estudiante");
+            System.out.println("2. Mostrar estudiantes");
+            System.out.println("3. Modificar estudiante");
+            System.out.println("4. Eliminar estudiante");
+            System.out.println("5. Ir a préstamos");
+            System.out.println("6. Volver al menú principal");
+            System.out.print("Opción: ");
+
+            int opcion = sc.nextInt();
+            sc.nextLine();
+
+            switch (opcion) {
+                case 1:
+                    EI = m.LlenarEstudianteIg(EI, vI);
+                    break;
+
+                case 2:
+                    m.MostrarEstudianteIng(EI);
+                    break;
+
+                case 3:
+                    
+                    EI=m.modificEstudianteIngenierias(vI.validarCedula(sc.next()), EI, vI);
+                    break;
+
+                case 4:
+                    
+                    EI=m.eliminarEstudianteIngenieria(vI.validarCedula(sc.next()), EI);
+                    break;
+
+                case 5:
+                    menuPrestamosEI(sc, t, c, m, vC, vT);
+                    break;
+
+                case 6:
+                    menuIng = false; // vuelve atrás sin cerrar programa
+                    break;
+
+                default:
+                    System.out.println("Opción no válida.");
+            }
+        }
+    }
+
+    
+    static void menuDiseno(Scanner sc,
+                           LinkedList<EstudianteDiseño> ED,
+                           LinkedList<TabletaGrafica> t,
+                           LinkedList<ComputadoraPortatil> c,
+                           Metodo m,
+                           validacionesD vD,
+                           validacionesC vC,
+                           validacionesT vT) {
+
+        boolean menuDis = true;
+
+        while (menuDis) {
+            System.out.println(" bienvenido estudiante de diseño");
+            System.out.println("1. Agregar estudiante");
+            System.out.println("2. Mostrar estudiantes");
+            System.out.println("3. Modificar estudiante");
+            System.out.println("4. Eliminar estudiante");
+            System.out.println("5. Ir a préstamos");
+            System.out.println("6. Volver al menú principal");
+            System.out.print("Opción: ");
+
+            int opcion = sc.nextInt();
+            sc.nextLine();
+
+            switch (opcion) {
+                case 1:
+                    ED = m.LlenarEstudianteDi(ED, vD);
+                    break;
+
+                case 2:
+                    m.MostrarEstudianteDis(ED);
+                    break;
+
+                case 3:
+                    
+                    ED=m.modificEstudianteDiseño(vD.validarCedula(sc.next()), ED, vD);
+                    break;
+
+                case 4:
+                    
+                    ED = m.eliminarEstudianteDiseño(vD.validarCedula(sc.next()), ED);
+                    break;
+
+                case 5:
+                    menuPrestamosED(sc, t, c, m, vC, vT);
+                    break;
+
+                case 6:
+                    menuDis = false;
+                    break;
+
+                default:
+                    System.out.println("Opción no válida.");
+            }
+        }
+    }
+
+    // ===== Submenú Préstamos =====
+    static void menuPrestamosEI(Scanner sc,
+                              LinkedList<TabletaGrafica> t,
+                              LinkedList<ComputadoraPortatil> c,
+                              Metodo m,
+                              validacionesC vC,
+                              validacionesT vT) {
+
+        boolean menuPrestamosEI = true;
+
+        while (menuPrestamosEI) {
+            System.out.println("\n Bienvenido estudiante de ingeniería, aquí puedes gestionar tus préstamos");
+            System.out.println("1. Registrar préstamo");
+            System.out.println("2. Modificar préstamo");
+            System.out.println("3. Mostrar préstamos");
+            System.out.println("4. Eliminar préstamo");
+            System.out.println("5. Volver atrás");
+            System.out.print("Opción: ");
+
+            int opcion = sc.nextInt();
+            sc.nextLine();
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("Registrar préstamo (conecta tu método aquí).");
+                    break;
+
+                case 2:
+                    // m.modificarPrestamo(...);
+                    System.out.println("Modificar préstamo (conecta tu método aquí).");
+                    break;
+
+                case 3:
+                    // m.mostrarPrestamos(...);
+                    System.out.println("Mostrar préstamos (conecta tu método aquí).");
+                    break;
+
+                case 4:
+                    // m.eliminarPrestamo(...);
+                    System.out.println("Eliminar préstamo (conecta tu método aquí).");
+                    break;
+
+                case 5:
+                    menuPrestamosEI = false; // vuelve al submenú anterior
+                    break;
+
+                default:
+                    System.out.println("Opción no válida.");
+            }
+        }
+    }
+    static void menuPrestamosED(Scanner sc,
+                              LinkedList<TabletaGrafica> t,
+                              LinkedList<ComputadoraPortatil> c,
+                              Metodo m,
+                              validacionesC vC,
+                              validacionesT vT) {
+
+        boolean menuPrestamosED = true;
+
+        while (menuPrestamosED) {
+            System.out.println("\n Bienvenido estudiante de diseño, aquí puedes gestionar tus préstamos");
+            System.out.println("1. Registrar préstamo");
+            System.out.println("2. Modificar préstamo");
+            System.out.println("3. Mostrar préstamos");
+            System.out.println("4. Eliminar préstamo");
+            System.out.println("5. Volver atrás");
+            System.out.print("Opción: ");
+
+            int opcion = sc.nextInt();
+            sc.nextLine();
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("Registrar préstamo (conecta tu método aquí).");
+
+                    break;
+
+                case 2:
+                    // m.modificarPrestamo(...);
+                    System.out.println("Modificar préstamo (conecta tu método aquí).");
+                    break;
+
+                case 3:
+                    // m.mostrarPrestamos(...);
+                    System.out.println("Mostrar préstamos (conecta tu método aquí).");
+                    break;
+
+                case 4:
+                    // m.eliminarPrestamo(...);
+                    System.out.println("Eliminar préstamo (conecta tu método aquí).");
+                    break;
+
+                case 5:
+                    menuPrestamosED = false; // vuelve al submenú anterior
+                    break;
+
+                default:
+                    System.out.println("Opción no válida.");
+            }
+        }
+    }
+
+   
 }
-     
