@@ -4,6 +4,9 @@ public class Metodo {
 Scanner sc = new Scanner(System.in);
 validacionesD vD = new validacionesD();
 validacionesI vI = new validacionesI();
+validacionesC vC = new validacionesC();
+validacionesT vT = new validacionesT();
+
     public LinkedList<EstudianteIngenieria> LlenarEstudianteIg(LinkedList<EstudianteIngenieria> l, validacionesI vI){
         boolean pedir= true;
         while(pedir){
@@ -21,19 +24,25 @@ validacionesI vI = new validacionesI();
         //o.setTelefono(sc.next());
         o.setTelefono(vI.validarTelefono(sc.next()));
         
-        System.out.println("Ingrese el número de semestre del estudiante (1-15): ");
+        System.out.println("Ingrese el número de semestre del estudiante (1-15):  ");
         //o.setNumero_semestre(sc.nextInt());
         o.setNumero_semestre(vI.validarNumerodesemestre(sc));
-        System.out.println("el promedio del estudiante es: ");
+        System.out.println("el promedio del estudiante es:  ");
         //o.setPromedio(sc.nextFloat());
         o.setPromedio(vI.validarPromedio(sc));
         
-        System.out.println("el serial del equipo es: ");
+        System.out.println("el serial del equipo es:  ");
         o.setSerial_Equipo(sc.next());
         o.setSerial_Equipo(vI.validarSerialdeEquipo(sc));
 
         
         l.add(o);
+        System.out.println("¿ingrsar otro estudiante?, 1.Si, 2.No");
+        int opt = sc.nextInt();
+            if (opt == 2) {
+                pedir = false;
+                break;
+                }
         
 }
     return l;
@@ -57,11 +66,7 @@ public LinkedList<EstudianteDiseño> LlenarEstudianteDi(LinkedList<EstudianteDis
         System.out.println("La modalidad es virtual o presencial? 1.Presencial, 2.Virtual ");
         e.setModalidad(vD.validarModalidad(sc));
 
-        int opc = sc.nextInt();
-        if (opc == 1)
-            System.out.println("La modalidad es presencial");
-            else if (opc == 2)
-            System.out.println("la modalidad es virtual");
+        
         System.out.println("La cantidad de asignaturas que ve el estudiante son:  ");
         
         e.setCantidad_asignaturas(vD.validarCantidaddeasignatura(sc));
@@ -113,16 +118,16 @@ public LinkedList<ComputadoraPortatil> LlenarCompu(LinkedList<ComputadoraPortati
     while (pedir){
         ComputadoraPortatil u= new ComputadoraPortatil();
         System.out.println("el serial del computador es: ");
-        u.setSerial(sc.next());
+        
         u.setSerial(vC.validarSerialdeEquipo(sc));
         System.out.println("La marca del computador es: ");
-        u.setMarca(sc.next());
+        
         u.setMarca(vC.ValidarMarca(sc.next()));
         System.out.println("el tamaño del compuatdor es: ");
-        u.setTamaño(sc.nextFloat());
+        
         u.setTamaño(vC.validarTamaño(sc));
         System.out.println("El precio del computador es: ");
-        u.setPrecio(sc.nextFloat());
+        
         u.setPrecio(vC.validarPrecio(sc));
         System.out.println("El sistema operativo del computador es: 1.Windows 7, 2.Windows 10, 3.Windows 11");
         u.setSistema_operativo(vC.validarSistemaOperativo(sc));
@@ -151,45 +156,45 @@ public LinkedList<ComputadoraPortatil> LlenarCompu(LinkedList<ComputadoraPortati
 }
 public void MostrarEstudianteIng(LinkedList<EstudianteIngenieria> l){
     for ( EstudianteIngenieria o : l ) {
-        System.out.println("Nombre"+ o.getNombre());
-        System.out.println("Apellido"+o.getApellido());
-        System.out.println("Cedula"+o.getCedula());
-        System.out.println("telefono"+o.getTelefono());
-        System.out.println("numero de semestre"+o.getNumero_semestre());
-        System.out.println("promedio"+o.getPromedio());
-        System.out.println("serial del equipo"+o.getSerial_Equipo());
+        System.out.println("Nombre: "+ o.getNombre());
+        System.out.println("Apellido: "+o.getApellido());
+        System.out.println("Cedula: "+o.getCedula());
+        System.out.println("Telefono: "+o.getTelefono());
+        System.out.println("Numero de semestre: "+o.getNumero_semestre());
+        System.out.println("Promedio: "+o.getPromedio());
+        System.out.println("Serial del equipo: "+o.getSerial_Equipo());
     }
 }
 public void MostrarEstudianteDis(LinkedList<EstudianteDiseño> e){
     for (EstudianteDiseño o : e) {
-        System.out.println("Nombre"+o.getNombre());
-        System.out.println("Apellido"+o.getApellido());
-        System.out.println("Cedula"+o.getCedula());
-        System.out.println("Telefono"+o.getTelefono());
-        System.out.println("Cantidad de asignaturas"+o.getCantidad_asignaturas());
-        System.out.println("Serial del equipo"+o.getSerial_equipo());
+        System.out.println("Nombre: "+o.getNombre());
+        System.out.println("Apellido: "+o.getApellido());
+        System.out.println("Cedula: "+o.getCedula());
+        System.out.println("Telefono: "+o.getTelefono());
+        System.out.println("Cantidad de asignaturas: "+o.getCantidad_asignaturas());
+        System.out.println("Serial del equipo: "+o.getSerial_equipo());
         }
 }
 public void MostrarTableta(LinkedList<TabletaGrafica> l){
     for ( TabletaGrafica o : l) {
-        System.out.println("Serial"+o.getSerial());
-        System.out.println("Marca"+o.getMarca());
-        System.out.println("Precio"+o.getPrecio());
-        System.out.println("Tamaño"+o.getTamaño());
-        System.out.println("Almacenamiento"+o.isAlmacenamiento());
-        System.out.println("Peso"+o.getPeso());
+        System.out.println("Serial: "+o.getSerial());
+        System.out.println("Marca: "+o.getMarca());
+        System.out.println("Precio: "+o.getPrecio());
+        System.out.println("Tamaño: "+o.getTamaño());
+        System.out.println("Almacenamiento: "+o.isAlmacenamiento());
+        System.out.println("Peso: "+o.getPeso());
         
         
     }
 }
 public void MostrarComputador(LinkedList<ComputadoraPortatil> l){
     for ( ComputadoraPortatil o : l) {
-        System.out.println("Serial"+o.getSerial());
-        System.out.println("Marca"+o.getMarca());
-        System.out.println("Precio"+o.getPrecio());
-        System.out.println("Tamaño"+o.getTamaño());
-        System.out.println("Sistema operativo"+o.isSistema_operativo());
-        System.out.println("Procesador"+o.isProcesador());
+        System.out.println("Serial: "+o.getSerial());
+        System.out.println("Marca: "+o.getMarca());
+        System.out.println("Precio: "+o.getPrecio());
+        System.out.println("Tamaño: "+o.getTamaño());
+        System.out.println("Sistema operativo: "+o.isSistema_operativo());
+        System.out.println("Procesador: "+o.isProcesador());
         
         
     }
@@ -283,11 +288,11 @@ public LinkedList<ComputadoraPortatil> modificComputador(String Serial, LinkedLi
     for (ComputadoraPortatil o : l) {
         if(o.getSerial().equals(Serial)){
             System.out.println("ingrese la marca");
-            o.setMarca(sc.next());
+            o.setMarca(vC.ValidarMarca(sc.next()));
             System.out.println("ingrese el tamaño");
-            o.setTamaño(sc.nextFloat());
+            o.setTamaño(vC.validarTamaño(sc));
             System.out.println("ingrese el precio");
-            o.setPrecio(sc.nextFloat());
+            o.setPrecio(vC.validarPrecio(sc));
             System.out.println("El sistema operativo del computador es: 1.Windows 7, 2.Windows 10, 3.Windows 11");
             int opc = sc.nextInt();
             if (opc == 1) {
@@ -376,7 +381,7 @@ public LinkedList<EstudianteIngenieria> RegistrarPrestramoEI(String Cedula, Link
              System.out.println("Que equipo desea prestar? 1.Computadora, 2.Tableta");
             int opt = sc.nextInt();
             if (opt == 1) {
-                System.out.println("ingrese el serial del computador a prestar");
+                System.out.println("Ingrese los datos del computador a prestar");
                 o.setSerial_Equipo(sc.next());
                 System.out.println("Prestamo registrado");
             } else if (opt == 2) {

@@ -79,7 +79,9 @@ public class metodoprincipal {
             System.out.println("3. Modificar estudiante");
             System.out.println("4. Eliminar estudiante");
             System.out.println("5. Ir a préstamos");
-            System.out.println("6. Volver al menú principal");
+            System.out.println("6. exportar estudiantes a archivo");
+            System.out.println("7. importar estudiantes desde archivo");
+            System.out.println("8. Volver al menú principal");
             System.out.print("Opción: ");
 
             int opcion = sc.nextInt();
@@ -109,7 +111,17 @@ public class metodoprincipal {
                     break;
 
                 case 6:
-                    menuIng = false; // vuelve atrás sin cerrar programa
+                    Exportar e = new Exportar();
+                    e.exportarArchivoEI(EI);
+                    break;
+
+                case 7:
+                    importar i = new importar();
+                    EI = i.ImportarArchivoEI(); 
+                    break;
+
+                case 8:
+                    menuIng = false; 
                     break;
 
                 default:
@@ -137,7 +149,9 @@ public class metodoprincipal {
             System.out.println("3. Modificar estudiante");
             System.out.println("4. Eliminar estudiante");
             System.out.println("5. Ir a préstamos");
-            System.out.println("6. Volver al menú principal");
+            System.out.println("6. exportar estudiantes a archivo");
+            System.out.println("7. importar estudiantes desde archivo");
+            System.out.println("8. Volver al menú principal");
             System.out.print("Opción: ");
 
             int opcion = sc.nextInt();
@@ -167,6 +181,15 @@ public class metodoprincipal {
                     break;
 
                 case 6:
+                    Exportar e = new Exportar();
+                    e.exportarArchivoED(ED);
+                    break;
+
+                case 7:
+                    
+                    break;
+
+                case 8:
                     menuDis = false;
                     break;
 
@@ -203,10 +226,8 @@ public class metodoprincipal {
                 case 1:
                    
                     
-                sc.nextLine(); // limpia el ENTER pendiente si venías de nextInt()
-                System.out.print("Ingrese la cédula del estudiante: ");
-                String cedula = sc.nextLine();
-
+                System.out.println("Ingrese la cédula del estudiante:");
+                String cedula = sc.next();
                 EI = m.RegistrarPrestramoEI(cedula, EI);
 
                     break;

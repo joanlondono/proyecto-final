@@ -8,11 +8,12 @@ public class Exportar {
             System.out.println("La lista esta vacia no se puede exportar el archivo");
             return;
         } else {
-            try (FileWriter e = new FileWriter("Estudiantes.txt")) {
+            try (FileWriter e = new FileWriter("EstudiantesI.txt")) {
                 for (EstudianteIngenieria obj : lista) {
                     e.write("Nombre: " + obj.getNombre() + "\n");
-                    e.write("Carnet: " + obj.getTelefono() + "\n");
+                    e.write("telefono " + obj.getTelefono() + "\n");
                     e.write("Cedula: " + obj.getCedula() + "\n");
+                    e.write("numero de semestre: "+obj.getNumero_semestre());
                     e.write("------------------------------------------------------ \n");
 
                 }
@@ -24,16 +25,18 @@ public class Exportar {
             }
         }
     }
-    public void exportarArchivoED(LinkedList<EstudianteDiseño> lista) {
-        if (lista.isEmpty()) {
+    public void exportarArchivoED(LinkedList<EstudianteDiseño> ED) {
+        if (ED.isEmpty()) {
             System.out.println("La lista esta vacia no se puede exportar el archivo");
             return;
         } else {
-            try (FileWriter e = new FileWriter("Estudiantes.txt")) {
-                for (EstudianteDiseño obj : lista) {
+            try (FileWriter e = new FileWriter("EstudiantesD.txt")) {
+                for (EstudianteDiseño obj : ED) {
                     e.write("Nombre: " + obj.getNombre() + "\n");
-                    e.write("Carnet: " + obj.getTelefono() + "\n");
+                    e.write("Telefono " + obj.getTelefono() + "\n");
                     e.write("Cedula: " + obj.getCedula() + "\n");
+                    e.write("telefono: " + obj.getTelefono() + "\n");
+                    e.write("cantidad de asignaturas: " + obj.getCantidad_asignaturas() + "\n");
                     e.write("------------------------------------------------------ \n");
 
                 }
@@ -49,11 +52,12 @@ public class Exportar {
             System.out.println("La lista esta vacia no se puede exportar el archivo");
             return;
         } else {
-            try (FileWriter e = new FileWriter("Tecnologia.txt")) {
+            try (FileWriter e = new FileWriter("Tabletas.txt")) {
                 for (TabletaGrafica obj : lista) {
-                    e.write("Nombre: " + obj.getSerial() + "\n");
-                    e.write("Carnet: " + obj.getPrecio() + "\n");
-                    e.write("Cedula: " + obj.getMarca() + "\n");
+                    e.write("Serial: " + obj.getSerial() + "\n");
+                    e.write("Precio: " + obj.getPrecio() + "\n");
+                    e.write("Marca: " + obj.getMarca() + "\n");
+
                     e.write("------------------------------------------------------ \n");
 
                 }
@@ -69,11 +73,11 @@ public class Exportar {
             System.out.println("La lista esta vacia no se puede exportar el archivo");
             return;
         } else {
-            try (FileWriter e = new FileWriter("Tecnologia.txt")) {
+            try (FileWriter e = new FileWriter("Computadoras.txt")) {
                 for (ComputadoraPortatil obj : lista) {
-                    e.write("Nombre: " + obj.getSerial() + "\n");
-                    e.write("Carnet: " + obj.getPrecio() + "\n");
-                    e.write("Cedula: " + obj.getMarca() + "\n");
+                    e.write("Serial: " + obj.getSerial() + "\n");
+                    e.write("Precio: " + obj.getPrecio() + "\n");
+                    e.write("Marca: " + obj.getMarca() + "\n");
                     e.write("------------------------------------------------------ \n");
 
                 }
