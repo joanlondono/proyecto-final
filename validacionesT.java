@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.LinkedList;
 
 public class validacionesT {  
     Scanner sc = new Scanner(System.in);
@@ -7,7 +8,9 @@ public class validacionesT {
         String patron = "^(?=.{15,20}$)[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$";
         System.out.println("ingrese el serial de la tableta grafica:");
         while (true) {
-            serial = sc.nextLine().trim();
+            if (serial == null || serial.isEmpty()) {
+                serial = sc.nextLine().trim();
+            }
 
         if (serial.matches(patron)) {
             return serial;
@@ -15,8 +18,33 @@ public class validacionesT {
 
         System.out.println("Serial inválido. Debe tener letras/números y guiones, y medir entre 15 y 20 caracteres. Ej: ABC12-DEF34-GHI56");
         System.out.print("Intenta de nuevo: ");
+        serial = sc.nextLine().trim();
     }
 }
+
+    public String validarSerialdeEquipo(String serial, LinkedList<TabletaGrafica> lista) {
+        while (true) {
+            serial = validarSerialdeEquipo(serial);
+            if (!serialRepetido(serial, lista)) {
+                return serial;
+            }
+            System.out.println("Serial repetido. Ya existe una tableta con ese serial.");
+            System.out.print("Ingrese un serial distinto: ");
+            serial = "";
+        }
+    }
+
+    private boolean serialRepetido(String serial, LinkedList<TabletaGrafica> lista) {
+        if (lista == null) {
+            return false;
+        }
+        for (TabletaGrafica tab : lista) {
+            if (tab.getSerial().equalsIgnoreCase(serial)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public float validarPrecio(Scanner sc) {
         float precio;

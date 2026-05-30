@@ -88,7 +88,7 @@ public LinkedList<TabletaGrafica> LlenarTableta(LinkedList<TabletaGrafica> l, va
     while (pedir){
         TabletaGrafica t = new TabletaGrafica();
         System.out.println("el serial de la tableta es: ");
-        t.setSerial(vT.validarSerialdeEquipo(sc.next()));
+        t.setSerial(vT.validarSerialdeEquipo(sc.next(), l));
         System.out.println("La marca de la tableta es: ");
         t.setMarca(vT.ValidarMarca(sc.next()));
         System.out.println("el tamaño de la tableta es: ");
@@ -115,7 +115,7 @@ public LinkedList<ComputadoraPortatil> LlenarCompu(LinkedList<ComputadoraPortati
         ComputadoraPortatil u= new ComputadoraPortatil();
         System.out.println("el serial del computador es: ");
         
-        u.setSerial(vC.validarSerialdeEquipo(sc.next()));
+        u.setSerial(vC.validarSerialdeEquipo(sc.next(), l));
         System.out.println("La marca del computador es: ");
         
         u.setMarca(vC.ValidarMarca(sc.next()));

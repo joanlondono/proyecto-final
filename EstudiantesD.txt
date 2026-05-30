@@ -1,0 +1,16 @@
+Nombre: alex
+Apellido: huila
+Telefono: 3052156387
+Cedula: 71239272
+cantidad de asignaturas: 2
+Modalidad: Presencial
+Serial del equipo: AZXCV-POYR-D5RT6
+------------------------------------------------------ 
+Cedula: 1011395976
+Nombre: joan
+Apellido: londono
+Telefono: 3022155327
+Modalidad: Virtual
+Cantidad_asignaturas: 6
+Serial_Equipo: ERTYU-PONB6-76NVD
+------------------------------------------------------ 

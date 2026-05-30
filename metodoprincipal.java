@@ -347,7 +347,7 @@ while (menuPrestamos){
                 break;
             case 6:
                 importar i = new importar();
-                i.importarArchivoC();
+                c = i.importarArchivoC();
                 break;
             case 7:
                 menuComputadora = false; 
@@ -394,7 +394,7 @@ static void menuTableta(Scanner sc,
                 break;
             case 6:
                 importar i = new importar();
-                i.importarArchivoT();
+                t = i.importarArchivoT();
                 break;
             case 7:
                 menuTableta = false;
