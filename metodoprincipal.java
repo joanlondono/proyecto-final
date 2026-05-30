@@ -10,13 +10,14 @@ public class metodoprincipal {
         validacionesD vD = new validacionesD();
         validacionesC vC = new validacionesC();
         validacionesT vT = new validacionesT();
+        validacionesR vR = new validacionesR();
 
         LinkedList<EstudianteIngenieria> EI = new LinkedList<>();
         LinkedList<EstudianteDiseño> ED = new LinkedList<>();
         LinkedList<TabletaGrafica> t = new LinkedList<>();
         LinkedList<ComputadoraPortatil> c = new LinkedList<>();
         
-
+        
         Metodo m = new Metodo();
 
         boolean menuPrincipal = true;
@@ -26,11 +27,12 @@ public class metodoprincipal {
             System.out.println("1. Estudiante de ingeniería");
             System.out.println("2. Estudiante de diseño");
             System.out.println("3. Mostrar inventario");
-            System.out.println("4. Salir");
+            System.out.println("4. Registrar préstamo");
+            System.out.println("5. Salir");
             System.out.print("Opción: ");
 
             int opcion = sc.nextInt();
-            sc.nextLine(); // limpiar buffer
+            sc.nextLine(); 
 
             switch (opcion) {
                 case 1:
@@ -48,6 +50,10 @@ public class metodoprincipal {
                     break;
 
                 case 4:
+                    m.registrarPrestamo(sc, EI, ED, c, t, vR, vC, vT);
+                    break;
+
+                case 5:
                     menuPrincipal = false;
                     System.out.println("Saliendo del programa");
                     break;
@@ -117,7 +123,7 @@ public class metodoprincipal {
 
                 case 7:
                     importar i = new importar();
-                    EI = i.ImportarArchivoEI(); 
+                    EI = i.ImportarArchivoEI();
                     break;
 
                 case 8:
@@ -186,7 +192,8 @@ public class metodoprincipal {
                     break;
 
                 case 7:
-                    
+                    importar i = new importar();
+                    ED = i.importarArchivoED();
                     break;
 
                 case 8:
@@ -224,27 +231,7 @@ public class metodoprincipal {
 
             switch (opcion) {
                 case 1:
-                   
-                    
-                System.out.println("Ingrese la cédula del estudiante:");
-                String cedula = sc.next();
-                EI = m.RegistrarPrestramoEI(cedula, EI);
-
-                    break;
-
-                case 2:
-                    // m.modificarPrestamo(...);
-                    System.out.println("Modificar préstamo (conecta tu método aquí).");
-                    break;
-
-                case 3:
-                    // m.mostrarPrestamos(...);
-                    System.out.println("Mostrar préstamos (conecta tu método aquí).");
-                    break;
-
-                case 4:
-                    // m.eliminarPrestamo(...);
-                    System.out.println("Eliminar préstamo (conecta tu método aquí).");
+                menuPrestamos(sc, t, c, m, vC, vT);
                     break;
 
                 case 5:
@@ -279,27 +266,11 @@ public class metodoprincipal {
 
             switch (opcion) {
                 case 1:
-                    System.out.println("Registrar préstamo (conecta tu método aquí).");
-
-                    break;
-
-                case 2:
-                    // m.modificarPrestamo(...);
-                    System.out.println("Modificar préstamo (conecta tu método aquí).");
-                    break;
-
-                case 3:
-                    // m.mostrarPrestamos(...);
-                    System.out.println("Mostrar préstamos (conecta tu método aquí).");
-                    break;
-
-                case 4:
-                    // m.eliminarPrestamo(...);
-                    System.out.println("Eliminar préstamo (conecta tu método aquí).");
+                    // Registrar préstamo para estudiante de diseño
                     break;
 
                 case 5:
-                    menuPrestamosED = false; // vuelve al submenú anterior
+                    menuPrestamosED = false; 
                     break;
 
                 default:
@@ -307,6 +278,131 @@ public class metodoprincipal {
             }
         }
     }
+    static void menuPrestamos(Scanner sc,
+                              LinkedList<TabletaGrafica> t,
+                              LinkedList<ComputadoraPortatil> c,
+                              Metodo m,
+                              validacionesC vC,
+                              validacionesT vT) {
 
+        boolean menuPrestamos = true;
+while (menuPrestamos){
+    System.out.println("bienvenido a tu registro de prestamos");
+    System.out.println("¿que equipo quiere prestar?");
+    System.out.println("1. Computadora portatil");
+    System.out.println("2. Tableta grafica");
+    System.out.println("3. Volver atrás");
+    int opcion = sc.nextInt();
+    sc.nextLine();
+    switch (opcion) {
+        case 1:
+            menuComputadora(sc, c, m, vC);
+                break;
+
+        case 3:
+            menuPrestamos = false; // vuelve al submenú anterior
+            break;
+
+        default:
+            System.out.println("Opción no válida.");
+    }
+
+}
+    }
+    static void menuComputadora(Scanner sc,
+                              LinkedList<ComputadoraPortatil> c,
+                              Metodo m,
+                              validacionesC vC) {
+    boolean menuComputadora = true;
+    while (menuComputadora) {
+        System.out.println("bienvenido a tu registro de computadora portatil");
+        System.out.println("1. Registrar computadora portatil");
+        System.out.println("2. Mostrar computadoras portatiles disponibles");
+        System.out.println("3. Modificar computadora portatil");
+        System.out.println("4. Eliminar computadora portatil");
+        System.out.println("5. Exportar computadoras a archivo");
+        System.out.println("6. Importar computadoras desde archivo");
+        System.out.println("7.hacer prestamo");
+        System.out.println("8. Volver atrás");
+        int opcion = sc.nextInt();
+        sc.nextLine();
+        switch (opcion) {
+            case 1:
+                c=m.LlenarCompu(c, vC);
+                break;
+
+            case 2:
+                m.MostrarComputador(c);
+               
+                break;
+            case 3:
+                c=m.modificComputador(vC.validarSerialdeEquipo(sc.next()), c, vC);
+                break;
+            case 4:
+                c=m.eliminarComputador(vC.validarSerialdeEquipo(sc.next()), c);
+                break;
+            case 5:
+                Exportar e = new Exportar();
+                e.exportarArchivoC(c);
+                break;
+            case 6:
+                importar i = new importar();
+                i.importarArchivoC();
+                break;
+            case 7:
+                menuComputadora = false; 
+                break;
+            default:
+                System.out.println("Opción no válida.");
+        }
+    }
    
 }
+static void menuTableta(Scanner sc,
+                        LinkedList<TabletaGrafica> t,
+                        Metodo m,
+                        validacionesT vT) {
+    boolean menuTableta = true;
+    while (menuTableta) {
+        System.out.println("bienvenido a tu registro de tableta grafica");
+        System.out.println("1. Registrar tableta grafica");
+        System.out.println("2. Mostrar tabletas graficas disponibles");
+        System.out.println("3. Modificar tableta grafica");
+        System.out.println("4. Eliminar tableta grafica");
+        System.out.println("5. Exportar tabletas a archivo");
+        System.out.println("6. Importar tabletas desde archivo");
+        System.out.println("7.hacer prestamo");
+        System.out.println("8. Volver atrás");
+        int opcion = sc.nextInt();
+        sc.nextLine();
+        switch (opcion) {
+            case 1:
+                t=m.LlenarTableta(t, vT);
+                break;
+                case 2:
+                m.MostrarTableta(t);
+                break;
+            case 3:
+                t=m.modificTableta(vT.validarSerialdeEquipo(sc.next()), t, vT);
+                break;
+            case 4:
+                t=m.eliminarTableta(vT.validarSerialdeEquipo(sc.next()), t);
+                break;
+            case 5:
+                Exportar e = new Exportar();
+                e.exportarArchivoT(t);
+                break;
+            case 6:
+                importar i = new importar();
+                i.importarArchivoT();
+                break;
+            case 7:
+                menuTableta = false;
+                break;
+            default:
+                System.out.println("Opción no válida.");
+        }
+    }
+} 
+}
+                            

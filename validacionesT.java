@@ -3,13 +3,11 @@ import java.util.Scanner;
 public class validacionesT {  
     Scanner sc = new Scanner(System.in);
 
-        public String validarSerialdeEquipo(Scanner sc) {
-           String serial;
-    String patron = "^(?=.{15,20}$)[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$";
-    System.out.println("ingrese el serial de la tableta grafica:");
-
-    while (true) {
-        serial = sc.nextLine().trim();
+        public String validarSerialdeEquipo(String serial) {
+        String patron = "^(?=.{15,20}$)[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$";
+        System.out.println("ingrese el serial de la tableta grafica:");
+        while (true) {
+            serial = sc.nextLine().trim();
 
         if (serial.matches(patron)) {
             return serial;
@@ -21,19 +19,14 @@ public class validacionesT {
 }
 
     public float validarPrecio(Scanner sc) {
-    float precio;
-
-    while (true) {
-        System.out.println("ingrese el precio de la tableta grafica:");
-
-        
-        while (!sc.hasNextFloat()) {
+        float precio;
+        while (true) {
+            System.out.println("ingrese el precio de la tableta grafica:");
+            while (!sc.hasNextFloat()) {
             System.out.println("Entrada no válida. Ingrese un número positivo:");
-            sc.next(); 
-        }
-
-        
-        precio = sc.nextFloat();
+                sc.next(); 
+            }
+            precio = sc.nextFloat();
         sc.nextLine(); 
 
         if (precio > 1000000.00 && precio < 20000000.00) {
@@ -45,11 +38,9 @@ public class validacionesT {
 
 }
 public String ValidarMarca(String marca) {
-       boolean isValid = false;
-
-        while (!isValid) {
+    boolean isValid = false;
+    while (!isValid) {
         isValid = true;
-
         if (marca.isEmpty() || marca.length() > 20) {
             isValid = false;
         } else {
@@ -70,17 +61,12 @@ public String ValidarMarca(String marca) {
 }
 public float validarTamaño(Scanner sc) {
     float tamaño;
-
     while (true) {
-
-        
         while (!sc.hasNextFloat()) {
             System.out.println("Entrada no válida. Ingrese un número (0-20):");
-            sc.next(); 
-        }
-
-        
-        tamaño = sc.nextFloat();
+                sc.next(); 
+            }
+            tamaño = sc.nextFloat();
         sc.nextLine(); 
 
         if (tamaño >= 0 && tamaño <= 20) {
@@ -93,7 +79,6 @@ public float validarTamaño(Scanner sc) {
 
 
 public boolean validarAlmacenamiento(Scanner sc) {
-
     while (true) {
         System.out.println("cual es el almacenamiento de la tableta:");
         System.out.println("1. 256 GB, 2. 512 GB, 3. 1 TB");
@@ -116,17 +101,13 @@ public boolean validarAlmacenamiento(Scanner sc) {
 }
 public float validarPeso(Scanner sc) {
     float peso;
-
     while (true) {
         System.out.println("ingrese el peso de la tableta grafica:");
-        
         while (!sc.hasNextFloat()) {
             System.out.println("Entrada no válida. Ingrese un número (0-10):");
-            sc.next(); 
-        }
-
-        
-        peso = sc.nextFloat();
+                sc.next(); 
+            }
+            peso = sc.nextFloat();
         sc.nextLine(); 
 
         if (peso >= 0 && peso <= 10) {
@@ -136,7 +117,4 @@ public float validarPeso(Scanner sc) {
         System.out.println("Peso inválido. Debe estar entre 0 y 10. Intenta de nuevo:");
     }
 }
-
-
- 
 }

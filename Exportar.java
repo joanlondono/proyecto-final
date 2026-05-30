@@ -11,9 +11,13 @@ public class Exportar {
             try (FileWriter e = new FileWriter("EstudiantesI.txt")) {
                 for (EstudianteIngenieria obj : lista) {
                     e.write("Nombre: " + obj.getNombre() + "\n");
-                    e.write("telefono " + obj.getTelefono() + "\n");
+                    e.write("Apellido: " + obj.getApellido() + "\n");
+                    e.write("Telefono: " + obj.getTelefono() + "\n");
                     e.write("Cedula: " + obj.getCedula() + "\n");
-                    e.write("numero de semestre: "+obj.getNumero_semestre());
+                    e.write("Numero de semestre: "+obj.getNumero_semestre() + "\n");
+                    e.write("Promedio: " + obj.getPromedio() + "\n");
+                    e.write("Serial del equipo: " + obj.getSerial_Equipo() + "\n");
+                    
                     e.write("------------------------------------------------------ \n");
 
                 }
@@ -33,10 +37,12 @@ public class Exportar {
             try (FileWriter e = new FileWriter("EstudiantesD.txt")) {
                 for (EstudianteDiseño obj : ED) {
                     e.write("Nombre: " + obj.getNombre() + "\n");
-                    e.write("Telefono " + obj.getTelefono() + "\n");
+                    e.write("Apellido: " + obj.getApellido() + "\n");
+                    e.write("Telefono: " + obj.getTelefono() + "\n");
                     e.write("Cedula: " + obj.getCedula() + "\n");
-                    e.write("telefono: " + obj.getTelefono() + "\n");
                     e.write("cantidad de asignaturas: " + obj.getCantidad_asignaturas() + "\n");
+                    e.write("Modalidad: " + (obj.isModalidad() ? "Presencial" : "Virtual") + "\n");
+                    e.write("Serial del equipo: " + obj.getSerial_equipo() + "\n");
                     e.write("------------------------------------------------------ \n");
 
                 }
@@ -57,7 +63,9 @@ public class Exportar {
                     e.write("Serial: " + obj.getSerial() + "\n");
                     e.write("Precio: " + obj.getPrecio() + "\n");
                     e.write("Marca: " + obj.getMarca() + "\n");
-
+                    e.write("Tamaño: " + obj.getTamaño() + "\n");
+                    e.write("Almacenamiento: " + (obj.isAlmacenamiento() ? "Sí" : "No") + "\n");
+                    e.write("Peso: " + obj.getPeso() + "\n");
                     e.write("------------------------------------------------------ \n");
 
                 }
@@ -78,6 +86,9 @@ public class Exportar {
                     e.write("Serial: " + obj.getSerial() + "\n");
                     e.write("Precio: " + obj.getPrecio() + "\n");
                     e.write("Marca: " + obj.getMarca() + "\n");
+                    e.write("Tamaño: " + obj.getTamaño() + "\n");
+                    e.write("Sistema operativo: " + (obj.isSistema_operativo() ? "Sí" : "No") + "\n");
+                    e.write("Procesador: " + (obj.isProcesador() ? "Sí" : "No") + "\n");
                     e.write("------------------------------------------------------ \n");
 
                 }

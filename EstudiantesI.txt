@@ -1,5 +1,16 @@
 Nombre: joan
-Carnet: 3022155327
+Apellido: londono
+Telefono: 3022155327
 Cedula: 1011395976
-telefono: 3022155327
+Numero de semestre: 4
+Promedio: 4.5
+Serial del equipo: AQSWD-ECVB-12Z4T
+------------------------------------------------------ 
+Nombre: juan
+Apellido: buritica
+Telefono: 3002214739
+Cedula: 1020564310
+Numero de semestre: 14
+Promedio: 2.8
+Serial del equipo: ABC12-DEF34-GHI56
 ------------------------------------------------------ 
