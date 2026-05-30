@@ -17,7 +17,7 @@ public class metodoPrestamo {
             int opt = sc.nextInt();
             if (opt == 1) {
                 System.out.println("Ingrese los datos del computador a prestar");
-                
+                o.setSerial_Equipo(m.LlenarCompu(new LinkedList<ComputadoraPortatil>(), m.vC).get(0).getSerial());
                 System.out.println("Prestamo registrado");
             } else if (opt == 2) {
                 System.out.println("ingrese el serial de la tableta a prestar");
