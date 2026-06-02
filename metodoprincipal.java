@@ -27,8 +27,7 @@ public class metodoprincipal {
             System.out.println("1. Estudiante de ingeniería");
             System.out.println("2. Estudiante de diseño");
             System.out.println("3. Mostrar inventario");
-            System.out.println("4. Registrar préstamo");
-            System.out.println("5. Salir");
+            System.out.println("4. Salir");
             System.out.print("Opción: ");
 
             int opcion = sc.nextInt();
@@ -36,11 +35,11 @@ public class metodoprincipal {
 
             switch (opcion) {
                 case 1:
-                    menuIngenieria(sc, EI, t, c, m, vI, vC, vT);
+                    menuIngenieria(sc, EI, t, c, m, vI, vC, vT, vR, ED);
                     break;
 
                 case 2:
-                    menuDiseno(sc, ED, t, c, m, vD, vC, vT);
+                    menuDiseno(sc, ED, t, c, m, vD, vC, vT, vR, EI);
                     break;
 
                 case 3:
@@ -49,11 +48,8 @@ public class metodoprincipal {
                     m.MostrarComputador(c);
                     break;
 
+               
                 case 4:
-                    m.registrarPrestamo(sc, EI, ED, c, t, vR, vC, vT);
-                    break;
-
-                case 5:
                     menuPrincipal = false;
                     System.out.println("Saliendo del programa");
                     break;
@@ -74,7 +70,9 @@ public class metodoprincipal {
                               Metodo m,
                               validacionesI vI,
                               validacionesC vC,
-                              validacionesT vT) {
+                              validacionesT vT
+                              ,validacionesR vR,
+                              LinkedList<EstudianteDiseño> ED) {
 
         boolean menuIng = true;
 
@@ -113,7 +111,7 @@ public class metodoprincipal {
                     break;
 
                 case 5:
-                    menuPrestamosEI(sc, t, c, m, vC, vT,EI);
+                    menuPrestamosEI(sc, t, c, m, vI, vC, vT,EI, ED, vR);
                     break;
 
                 case 6:
@@ -144,7 +142,9 @@ public class metodoprincipal {
                            Metodo m,
                            validacionesD vD,
                            validacionesC vC,
-                           validacionesT vT) {
+                           validacionesT vT
+                           ,validacionesR vR,
+                           LinkedList<EstudianteIngenieria> EI) {
 
         boolean menuDis = true;
 
@@ -183,7 +183,7 @@ public class metodoprincipal {
                     break;
 
                 case 5:
-                    menuPrestamosED(sc, t, c, m, vC, vT);
+                    menuPrestamosED(sc, t, c, m, vC, vT,vD, ED, vR, EI);
                     break;
 
                 case 6:
@@ -211,9 +211,12 @@ public class metodoprincipal {
                               LinkedList<TabletaGrafica> t,
                               LinkedList<ComputadoraPortatil> c,
                               Metodo m,
+                              validacionesI vI,
                               validacionesC vC,
                               validacionesT vT,
-                            LinkedList<EstudianteIngenieria> EI) {
+                            LinkedList<EstudianteIngenieria> EI
+                            ,LinkedList<EstudianteDiseño> ED,
+                            validacionesR vR) {
 
         boolean menuPrestamosEI = true;
 
@@ -231,11 +234,20 @@ public class metodoprincipal {
 
             switch (opcion) {
                 case 1:
-                menuPrestamos(sc, t, c, m, vC, vT);
+                menuPrestamos(sc, t, c, m, vC, vT, EI, ED, vR);
+                    break;
+                case 2:
+                    m.ModificarPrestamoEI(vI.validarCedula(sc.next()), EI);
+                    break;
+                case 3:
+                    m.MostrarPrestamosEI(EI);
+                    break;
+                case 4:
+                    m.EliminarPrestamoEI(null, EI);
                     break;
 
                 case 5:
-                    menuPrestamosEI = false; // vuelve al submenú anterior
+                    menuPrestamosEI = false; 
                     break;
 
                 default:
@@ -248,7 +260,11 @@ public class metodoprincipal {
                               LinkedList<ComputadoraPortatil> c,
                               Metodo m,
                               validacionesC vC,
-                              validacionesT vT) {
+                              validacionesT vT,
+                              validacionesD vD,
+                              LinkedList<EstudianteDiseño> ED,
+                              validacionesR vR,
+                              LinkedList<EstudianteIngenieria> EI) {
 
         boolean menuPrestamosED = true;
 
@@ -266,7 +282,16 @@ public class metodoprincipal {
 
             switch (opcion) {
                 case 1:
-                    // Registrar préstamo para estudiante de diseño
+                    menuPrestamos(sc, t, c, m, vC, vT, EI, ED, vR);
+                    break;
+                case 2:
+                    m.ModificarPrestamoED(vD.validarCedula(sc.next()), ED);
+                    break;
+                case 3:
+                    m.MostrarPrestamosED(ED);
+                    break;
+                case 4:
+                    m.EliminarPrestamoED(null, ED);
                     break;
 
                 case 5:
@@ -283,12 +308,15 @@ public class metodoprincipal {
                               LinkedList<ComputadoraPortatil> c,
                               Metodo m,
                               validacionesC vC,
-                              validacionesT vT) {
+                              validacionesT vT,
+                              LinkedList<EstudianteIngenieria> EI,
+                              LinkedList<EstudianteDiseño> ED,
+                              validacionesR vR) {
 
         boolean menuPrestamos = true;
 while (menuPrestamos){
     System.out.println("bienvenido a tu registro de prestamos");
-    System.out.println("¿que equipo quiere prestar?");
+    System.out.println("¿que equipo quiere registrar para prestar?");
     System.out.println("1. Computadora portatil");
     System.out.println("2. Tableta grafica");
     System.out.println("3. Volver atrás");
@@ -296,11 +324,14 @@ while (menuPrestamos){
     sc.nextLine();
     switch (opcion) {
         case 1:
-            menuComputadora(sc, c, m, vC);
+            menuComputadora(sc, c, m, vC, vT, EI, ED, vR, t);
+                break;
+        case 2:
+            menuTableta(sc, t, m, vT, vR, EI, ED, c, vC);
                 break;
 
         case 3:
-            menuPrestamos = false; // vuelve al submenú anterior
+            menuPrestamos = false; 
             break;
 
         default:
@@ -312,7 +343,12 @@ while (menuPrestamos){
     static void menuComputadora(Scanner sc,
                               LinkedList<ComputadoraPortatil> c,
                               Metodo m,
-                              validacionesC vC) {
+                              validacionesC vC,
+                              validacionesT vT,
+                              LinkedList<EstudianteIngenieria> EI,
+                              LinkedList<EstudianteDiseño> ED,
+                              validacionesR vR,
+                              LinkedList<TabletaGrafica> t) {
     boolean menuComputadora = true;
     while (menuComputadora) {
         System.out.println("bienvenido a tu registro de computadora portatil");
@@ -322,7 +358,7 @@ while (menuPrestamos){
         System.out.println("4. Eliminar computadora portatil");
         System.out.println("5. Exportar computadoras a archivo");
         System.out.println("6. Importar computadoras desde archivo");
-        System.out.println("7.hacer prestamo");
+        System.out.println("7. Hacer préstamo");
         System.out.println("8. Volver atrás");
         int opcion = sc.nextInt();
         sc.nextLine();
@@ -350,6 +386,9 @@ while (menuPrestamos){
                 c = i.importarArchivoC();
                 break;
             case 7:
+                m.registrarPrestamo(sc, EI, ED, c, t, vR, vC, vT);
+                break;
+            case 8:
                 menuComputadora = false; 
                 break;
             default:
@@ -361,7 +400,12 @@ while (menuPrestamos){
 static void menuTableta(Scanner sc,
                         LinkedList<TabletaGrafica> t,
                         Metodo m,
-                        validacionesT vT) {
+                        validacionesT vT,
+                        validacionesR vR,
+                        LinkedList<EstudianteIngenieria> EI
+                        ,LinkedList<EstudianteDiseño> ED,
+                        LinkedList<ComputadoraPortatil> c,
+                        validacionesC vC) {
     boolean menuTableta = true;
     while (menuTableta) {
         System.out.println("bienvenido a tu registro de tableta grafica");
@@ -371,7 +415,7 @@ static void menuTableta(Scanner sc,
         System.out.println("4. Eliminar tableta grafica");
         System.out.println("5. Exportar tabletas a archivo");
         System.out.println("6. Importar tabletas desde archivo");
-        System.out.println("7.hacer prestamo");
+        System.out.println("7. Hacer préstamo");
         System.out.println("8. Volver atrás");
         int opcion = sc.nextInt();
         sc.nextLine();
@@ -397,7 +441,11 @@ static void menuTableta(Scanner sc,
                 t = i.importarArchivoT();
                 break;
             case 7:
-                menuTableta = false;
+                m.registrarPrestamo(sc, EI, ED, c, t, vR, vC, vT);
+                break;
+            
+            case 8:
+                menuTableta = false; 
                 break;
             default:
                 System.out.println("Opción no válida.");

@@ -553,6 +553,58 @@ public LinkedList<EstudianteDiseño> RegistrarPestramoED(String Cedula, LinkedLi
         
     }return D;
 }
-
+public LinkedList<EstudianteIngenieria> EliminarPrestamoEI(String Cedula, LinkedList<EstudianteIngenieria> l){
+    for (EstudianteIngenieria o : l) {
+        if(o.getCedula().equals(Cedula)){
+            o.setSerial_Equipo(null);
+            System.out.println("Préstamo eliminado");
+            break;
         }
+    }
+    if(l.stream().noneMatch(e -> e.getCedula().equals(Cedula))){
+        System.out.println("Estudiante no encontrado");
+    }
+    return l;
+}
+
+public LinkedList<EstudianteDiseño> EliminarPrestamoED(String Cedula, LinkedList<EstudianteDiseño> l){
+    for (EstudianteDiseño o : l) {
+        if(o.getCedula().equals(Cedula)){
+            o.setSerial_equipo(null);
+            System.out.println("Préstamo eliminado");
+            break;
+        }
+    }
+    if(l.stream().noneMatch(e -> e.getCedula().equals(Cedula))){
+        System.out.println("Estudiante no encontrado");
+    }
+    return l;
+}
+public void MostrarPrestamosEI(LinkedList<EstudianteIngenieria> l){
+    for (EstudianteIngenieria o : l) {
+        if (o.getSerial_Equipo() != null && !o.getSerial_Equipo().isEmpty()) {
+            System.out.println("Nombre: " + o.getNombre());
+            System.out.println("Apellido: " + o.getApellido());
+            System.out.println("Cedula: " + o.getCedula());
+            System.out.println("Telefono: " + o.getTelefono());
+          
+            System.out.println("Serial del equipo prestado: " + o.getSerial_Equipo());
+            System.out.println("-----------------------------");
+        }
+    }
+}
+public void MostrarPrestamosED(LinkedList<EstudianteDiseño> l){
+    for (EstudianteDiseño o : l) {
+        if (o.getSerial_equipo() != null && !o.getSerial_equipo().isEmpty()) {
+            System.out.println("Nombre: " + o.getNombre());
+            System.out.println("Apellido: " + o.getApellido());
+            System.out.println("Cedula: " + o.getCedula());
+            System.out.println("Telefono: " + o.getTelefono());
+          
+            System.out.println("Serial del equipo prestado: " + o.getSerial_equipo());
+            System.out.println("-----------------------------");
+        }
+    }
+}
+}
      
