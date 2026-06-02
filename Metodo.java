@@ -411,7 +411,7 @@ public LinkedList<ComputadoraPortatil> modificComputador(String Serial, LinkedLi
 }
 public LinkedList<EstudianteIngenieria> eliminarEstudianteIngenieria(String Cedula, LinkedList<EstudianteIngenieria> l){
     for (EstudianteIngenieria o : l) {
-        if(o.getCedula()==Cedula){
+        if(o.getCedula().equals(Cedula)){
             l.remove(o);
             System.out.println("Estudiante eliminado");
             break;
@@ -424,7 +424,7 @@ public LinkedList<EstudianteIngenieria> eliminarEstudianteIngenieria(String Cedu
 }
 public LinkedList<EstudianteDiseño> eliminarEstudianteDiseño(String Cedula, LinkedList<EstudianteDiseño> l){
     for (EstudianteDiseño o : l) {
-        if(o.getCedula()==Cedula){
+        if(o.getCedula().equals(Cedula)){
             l.remove(o);
             System.out.println("Estudiante eliminado");
             break;
@@ -464,7 +464,7 @@ public LinkedList<ComputadoraPortatil> eliminarComputador(String Serial, LinkedL
 
 public LinkedList<EstudianteIngenieria> ModificarPrestamoEI(String Cedula, LinkedList<EstudianteIngenieria> l){
     for (EstudianteIngenieria o : l) {
-        if(o.getCedula()==Cedula){
+        if(o.getCedula().equals(Cedula)){
              System.out.println("Que equipo desea modificar? 1.Computadora, 2.Tableta");
             int opt = sc.nextInt();
             if (opt == 1) {
@@ -487,7 +487,7 @@ public LinkedList<EstudianteIngenieria> ModificarPrestamoEI(String Cedula, Linke
 }
 public LinkedList<EstudianteDiseño> ModificarPrestamoED(String Cedula, LinkedList<EstudianteDiseño> D){
     for (EstudianteDiseño o : D) {
-        if(o.getCedula()==Cedula){
+        if(o.getCedula().equals(Cedula)){
              System.out.println("Que equipo desea modificar? 1.Computadora, 2.Tableta");
             int opt = sc.nextInt();
             if (opt == 1) {
@@ -510,7 +510,7 @@ public LinkedList<EstudianteDiseño> ModificarPrestamoED(String Cedula, LinkedLi
 }
 public LinkedList<EstudianteIngenieria> RegistrarPestramoEI(String Cedula, LinkedList<EstudianteIngenieria> l){
     for (EstudianteIngenieria o : l) {
-        if(o.getCedula()==Cedula){
+        if(o.getCedula().equals(Cedula)){
              System.out.println("que equipo desea prestar? 1.Computadora portatil, 2.Tableta grafica");
             int opt = sc.nextInt();
             if (opt == 1) {
@@ -533,7 +533,7 @@ public LinkedList<EstudianteIngenieria> RegistrarPestramoEI(String Cedula, Linke
 }
 public LinkedList<EstudianteDiseño> RegistrarPestramoED(String Cedula, LinkedList<EstudianteDiseño> D){
     for (EstudianteDiseño o : D) {
-        if(o.getCedula()==Cedula){
+        if(o.getCedula().equals(Cedula)){
              System.out.println("que equipo desea prestar? 1.Computadora portatil, 2.Tableta grafica");
             int opt = sc.nextInt();
             if (opt == 1) {
