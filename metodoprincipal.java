@@ -358,7 +358,7 @@ while (menuPrestamos){
         System.out.println("4. Eliminar computadora portatil");
         System.out.println("5. Exportar computadoras a archivo");
         System.out.println("6. Importar computadoras desde archivo");
-        System.out.println("7. Hacer préstamo");
+        System.out.println("7. Hacer préstamo de computadora portátil");
         System.out.println("8. Volver atrás");
         int opcion = sc.nextInt();
         sc.nextLine();
